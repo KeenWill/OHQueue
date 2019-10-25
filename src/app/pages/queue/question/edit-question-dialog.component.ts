@@ -10,7 +10,7 @@ import { Question } from '../models/question.model';
 export class EditQuestionDialogComponent {
 
     constructor(
-        public dialogRef: MatDialogRef<EditQuestionDialog>,
+        public dialogRef: MatDialogRef<EditQuestionDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public question: Question) { }
 
     onCloseClick(): void {
