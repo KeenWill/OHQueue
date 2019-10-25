@@ -10,7 +10,7 @@ import { Queue } from '../models/queue.model';
 export class NewQueueDialogComponent {
 
     constructor(
-        public dialogRef: MatDialogRef<NewQueueDialog>,
+        public dialogRef: MatDialogRef<NewQueueDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public queue: Queue) {
 
     }
