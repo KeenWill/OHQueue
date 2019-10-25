@@ -32,7 +32,7 @@ before_install:
 script:
   - npm run lint:ci
   - npm run test
-  - npm run build
+  #- npm run build
 
 #git:
 #  depth: 1
