@@ -14,62 +14,62 @@ import { QueuesService } from '../queues.service';
 @Component({
   selector: 'queue',
   templateUrl: './queue.component.html',
-  styleUrls: ['./queue.component.scss']
+  styleUrls: ['./queue.component.scss'],
 })
 export class QueueComponent implements OnInit {
 
   @Input() queue: Queue;
 
   questions: Observable<Question[]>;
-  //sansweredQuestionsObs: Observable<Question[]>;
-  //answeredQuestions: Observable<Question[]>;
+  // sansweredQuestionsObs: Observable<Question[]>;
+  // answeredQuestions: Observable<Question[]>;
 
   showAnswered: boolean = true;
 
   constructor(
-    private questionService: QuestionService, 
-    private queuesService: QueuesService, 
-    public auth: AuthService, 
-    public dialog: MatDialog) { 
+    private questionService: QuestionService,
+    private queuesService: QueuesService,
+    public auth: AuthService,
+    public dialog: MatDialog) {
 
       this.showAnswered = true;
 
   }
 
   ngOnInit() {
-    //this.unansweredQuestions = this.questionService.getUnansweredQuestions(this.queue.id);
-    //this.answeredQuestionsObs = this.questionService.getAnsweredQuestions(this.queue.id);
-    //this.answeredQuestions = this.answeredQuestionsObs;
+    // this.unansweredQuestions = this.questionService.getUnansweredQuestions(this.queue.id);
+    // this.answeredQuestionsObs = this.questionService.getAnsweredQuestions(this.queue.id);
+    // this.answeredQuestions = this.answeredQuestionsObs;
 
     this.questions = this.questionService.getQuestions(this.queue.id);
 
-    //this.unansweredQuestions.subscribe((q) => { console.log(JSON.stringify(q))})
+    // this.unansweredQuestions.subscribe((q) => { console.log(JSON.stringify(q))})
   }
 
   askQuestion(asker: User) {
     const dialogRef = this.dialog.open(AskQuestionDialog, {
       width: '250px',
-      data: {}
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.questionService.createQuestion(asker, this.queue.id, result.title || "", result.desc || "");
+      this.questionService.createQuestion(asker, this.queue.id, result.title || '', result.desc || '');
     });
   }
 
   showAnsweredQuestions() {
     this.showAnswered = true;
-    //this.answeredQuestions = this.answeredQuestionsObs;
+    // this.answeredQuestions = this.answeredQuestionsObs;
   }
 
   hideAnsweredQuestions() {
     this.showAnswered = false;
-    //this.answeredQuestions = of([]);
+    // this.answeredQuestions = of([]);
   }
 
   answerQuestion() {
-    //this.questionService.answerQuestion(this.queue.id);
-    console.log("answering question");
+    // this.questionService.answerQuestion(this.queue.id);
+    console.log('answering question');
   }
 
   openQueue() {
@@ -77,7 +77,7 @@ export class QueueComponent implements OnInit {
   }
 
   closeQueue() {
-    this.queuesService.closeQueue(this.queue.id); 
+    this.queuesService.closeQueue(this.queue.id);
   }
 
   deleteQueue() {

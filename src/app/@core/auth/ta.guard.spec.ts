@@ -12,13 +12,13 @@ xdescribe('TAGuard', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        AngularFireAuthModule
+        AngularFireAuthModule,
       ],
       providers: [
         TAGuard,
         { provide: AuthService, useValue: { afAuth: { } } },
-        { provide: NotifyService, useValue: { } }
-      ]
+        { provide: NotifyService, useValue: { } },
+      ],
     });
   });
 

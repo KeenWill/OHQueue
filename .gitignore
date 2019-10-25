@@ -44,3 +44,14 @@ Thumbs.db
 # Environment
 /src/environments/environment.prod.ts
 /src/environments/environment.ts
+
+
+
+.firebase/
+.github/
+.vscode/
+CHANGELOG.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+DEV_DOCS.md
+functions/

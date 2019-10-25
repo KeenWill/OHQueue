@@ -35,14 +35,14 @@
     ],
     "member-access": false,
     "no-arg": true,
-    "no-console": [
+    /*"no-console": [
       true,
       "debug",
       "log",
       "time",
       "timeEnd",
       "trace"
-    ],
+    ],*/
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-super": true,
@@ -108,12 +108,12 @@
       "ngx",
       "camelCase"
     ],
-    "component-selector": [
+    /*"component-selector": [
       true,
       "element",
       "ngx",
       "kebab-case"
-    ],
+    ],*/
     "ban": [
       true,
       "eval",

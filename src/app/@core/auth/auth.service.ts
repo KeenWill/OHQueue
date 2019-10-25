@@ -8,7 +8,7 @@ import {
 } from '@angular/fire/firestore';
 import { NotifyService } from '../notify/notify.service';
 
-import { Query } from '@firebase/firestore-types'
+import { Query } from '@firebase/firestore-types';
 
 import { Observable, of } from 'rxjs';
 import { switchMap, startWith, tap, filter } from 'rxjs/operators';
@@ -17,7 +17,7 @@ export interface User {
   uid: string;
   email?: string | null;
   displayName?: string;
-  isTA?: boolean
+  isTA?: boolean,
 }
 
 @Injectable()
@@ -153,14 +153,14 @@ export class AuthService {
   // Sets user data to firestore after succesful login
   private updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
-      `users/${user.uid}`
+      `users/${user.uid}`,
     );
 
     const data: User = {
       uid: user.uid,
       email: user.email || null,
       displayName: user.displayName || 'student',
-      isTA: user.isTA || false
+      isTA: user.isTA || false,
     };
     return userRef.set(data);
   }

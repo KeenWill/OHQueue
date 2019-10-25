@@ -10,6 +10,6 @@ import { UnservedPipe } from './pipes/served/unserved.pipe';
 @NgModule({
   declarations: [ServedPipe, UnservedPipe],
   providers: [AuthService, AuthGuard, TAGuard, NotifyService],
-  exports: [ServedPipe, UnservedPipe]
+  exports: [ServedPipe, UnservedPipe],
 })
 export class CoreModule { }
