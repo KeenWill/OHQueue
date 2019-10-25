@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 xdescribe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService]
+      providers: [AuthService],
     });
   });
 

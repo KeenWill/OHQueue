@@ -12,13 +12,13 @@ xdescribe('AuthGuard', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        AngularFireAuthModule
+        AngularFireAuthModule,
       ],
       providers: [
         AuthGuard,
         { provide: AuthService, useValue: { afAuth: { } } },
-        { provide: NotifyService, useValue: { } }
-      ]
+        { provide: NotifyService, useValue: { } },
+      ],
     });
   });
 

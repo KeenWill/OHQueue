@@ -4,7 +4,7 @@ import { auth } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
-  AngularFirestoreDocument
+  AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { NotifyService } from '../notify/notify.service';
 
@@ -17,7 +17,7 @@ export interface User {
   uid: string;
   email?: string | null;
   displayName?: string;
-  isTA?: boolean,
+  isTA?: boolean;
 }
 
 @Injectable()
@@ -29,7 +29,7 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
-    private notify: NotifyService
+    private notify: NotifyService,
   ) {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -40,7 +40,7 @@ export class AuthService {
         }
       }),
       tap(user => localStorage.setItem('user', JSON.stringify(user))),
-      startWith(JSON.parse(localStorage.getItem('user')))
+      startWith(JSON.parse(localStorage.getItem('user'))),
     );
   }
 
