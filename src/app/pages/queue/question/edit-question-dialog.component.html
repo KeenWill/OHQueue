@@ -1,0 +1,20 @@
+<div mat-dialog-content>
+  <p>Question Title</p>
+  <mat-form-field>
+    <input matInput required [(ngModel)]="this.question.title">
+  </mat-form-field>
+
+  <p>Question Description</p>
+  <mat-form-field>
+    <input matInput required [(ngModel)]="this.question.desc">
+  </mat-form-field>
+
+  <!--<mat-form-field>
+    <mat-error *ngIf="question.title === undefined">Title is required</mat-error>
+    <mat-error *ngIf="question.desc === undefined">Description is required</mat-error>
+  </mat-form-field>-->
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCloseClick()">Close</button>
+  <button mat-button [mat-dialog-close]="question" cdkFocusInitial>Ok</button>
+</div>

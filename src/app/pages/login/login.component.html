@@ -1,0 +1,17 @@
+<div *ngIf="!(auth.user | async); else alreadyLoggedIn">
+    <nb-card>
+        <nb-card-body>
+            <h3>Welcome to the 120 OH Queue. Please sign in with Google.</h3>
+            <button (click)="signInWithGoogle()" nbButton outline style="margin-top: 15px;">
+                <mat-icon>account_circle</mat-icon> &nbsp; Login with Google
+            </button>
+        </nb-card-body>
+    </nb-card>  
+</div>
+      
+<ng-template #alreadyLoggedIn>
+    <nb-card>
+        <nb-card-body>You are logged in <i class="fa fa-thumbs-up"></i></nb-card-body>
+    </nb-card>  
+</ng-template>
+

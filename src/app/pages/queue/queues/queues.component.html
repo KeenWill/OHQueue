@@ -1,0 +1,21 @@
+
+<!--<div style="display: table;">
+  <div style="display: table-row" ></div>
+  <div *ngFor="let queue of queues | async" >
+    <queue class="queue" *ngIf="queue.isOpen || (auth.user | async).isTA" [queue]="queue"></queue>
+  </div>
+</div>-->
+
+<div *ngIf="auth.user | async as user">
+  <nb-card *ngIf="user.isTA">
+    <nb-card-body>
+      <button nbButton fullWidth outline class="make-queue" (click)="makeQueue()">Make a New Queue</button>
+    </nb-card-body>
+  </nb-card>
+
+  <div class="lists row">
+    <div class="col-md-12 col-lg-6 col-xxxl-6" *ngFor="let queue of queues | async">
+      <queue class="queue" *ngIf="queue.isOpen || user.isTA" [queue]="queue"></queue>
+    </div>
+  </div>
+</div>

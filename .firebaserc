@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ohqueue-19906": {
+      "hosting": {
+        "ohqueue": [
+          "ohqueue-19906"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ohqueue-19906"
+  }
+}

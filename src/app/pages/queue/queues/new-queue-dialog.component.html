@@ -1,0 +1,17 @@
+<div mat-dialog-content>
+  <p>Queue Name</p>
+  <mat-form-field>
+    <input matInput required [(ngModel)]="queue.name">
+  </mat-form-field>
+
+  <p>Queue Description</p>
+  <mat-form-field>
+    <input matInput required [(ngModel)]="queue.desc">
+  </mat-form-field>
+
+  <mat-checkbox required [(ngModel)]="queue.allowGrouping">Allow Grouping?</mat-checkbox>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCloseClick()">Close</button>
+  <button mat-button [mat-dialog-close]="queue" cdkFocusInitial>Ok</button>
+</div>

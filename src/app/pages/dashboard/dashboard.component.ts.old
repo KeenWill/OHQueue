@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+import { AuthService } from '../../@core/auth/auth.service';
+import { QuestionService } from '../queue/question.service';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'ngx-dashboard',
+  templateUrl: './dashboard.component.html',
+})
+export class DashboardComponent {
+
+  numberOfQuestionsAsked: Observable<number>
+
+  constructor(public auth: AuthService, private questionService: QuestionService ) { 
+
+    this.numberOfQuestionsAsked = questionService.numberOfQuestionsAsked();
+
+  }
+}

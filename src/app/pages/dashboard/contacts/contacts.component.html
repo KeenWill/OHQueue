@@ -1,0 +1,25 @@
+<nb-card size="giant">
+  <nb-tabset fullWidth>
+
+    <nb-tab tabTitle="TAs">
+      <nb-list>
+        <nb-list-item class="contact" *ngFor="let ta of tas | async">
+          <nb-user [name]="ta.displayName" size="large"></nb-user>
+          <!--<nb-icon icon="phone-outline" pack="eva"></nb-icon>-->
+          <button nbButton outline (click)="demote(ta.uid)">Demote</button>
+        </nb-list-item>
+      </nb-list>
+    </nb-tab>
+
+    <nb-tab tabTitle="Students">
+      <nb-list>
+        <nb-list-item class="contact" *ngFor="let student of students | async">
+          <nb-user [name]="student.displayName" size="large"></nb-user>
+          <!--<span class="caption">{{ c.time | date: 'shortTime' }}</span>-->
+          <button nbButton outline (click)="promote(student.uid)">Promote</button>
+        </nb-list-item>
+      </nb-list>
+    </nb-tab>
+
+  </nb-tabset>
+</nb-card>
