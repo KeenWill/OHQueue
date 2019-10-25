@@ -27,7 +27,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome_travis_ci', 'Chrome'],
+    browsers: ['Chrome_travis_ci'],
     customLaunchers: {
       Chrome_travis_ci: {
         base: 'Chrome',
