@@ -29,7 +29,7 @@ before_script:
 script:
   - npm run lint:ci
   - npm run test
-  - npm run build:prod
+  - npm run build
 
 #git:
 #  depth: 1
