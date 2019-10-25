@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { QuestionService } from '../question.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Queue } from '../models/queue.model';
 import { Question } from '../models/question.model';
 
-import { AskQuestionDialog } from './ask-question-dialog.component';
+import { AskQuestionDialogComponent } from './ask-question-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../../@core/auth/auth.service';
 
@@ -47,7 +47,7 @@ export class QueueComponent implements OnInit {
   }
 
   askQuestion(asker: User) {
-    const dialogRef = this.dialog.open(AskQuestionDialog, {
+    const dialogRef = this.dialog.open(AskQuestionDialogComponent, {
       width: '250px',
       data: {},
     });

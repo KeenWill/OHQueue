@@ -3,7 +3,7 @@ export interface Question {
     uid: string;
     uName: string;
     queueId: string;
-    title: string;  
+    title: string;
     desc: string;
     timestamp: number;
     served: boolean;

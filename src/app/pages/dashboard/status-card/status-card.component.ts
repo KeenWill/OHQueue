@@ -27,8 +27,8 @@ export class StatusCardComponent {
   constructor(public queuesService: QueuesService) { }
 
   flip() {
-    this.queue.isOpen 
-      ? this.queuesService.closeQueue(this.queue.id) 
+    this.queue.isOpen
+      ? this.queuesService.closeQueue(this.queue.id)
       : this.queuesService.openQueue(this.queue.id);
   }
 }

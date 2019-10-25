@@ -5,7 +5,7 @@ import { QueuesService } from './queues.service';
 xdescribe('NotesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [QueuesService]
+      providers: [QueuesService],
     });
   });
 

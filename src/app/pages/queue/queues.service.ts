@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
-
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Queue } from './models/queue.model';
 
@@ -23,7 +21,7 @@ export class QueuesService {
           const data = a.payload.doc.data();
           return { id: a.payload.doc.id, ...data };
         });
-      })
+      }),
     );
   }
 
@@ -36,7 +34,7 @@ export class QueuesService {
       name,
       isOpen: false,
       desc,
-      allowGrouping
+      allowGrouping,
     };
     return this.queuesCollection.add(queue);
   }

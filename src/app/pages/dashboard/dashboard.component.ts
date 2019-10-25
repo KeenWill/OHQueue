@@ -1,10 +1,10 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
 import { Observable } from 'rxjs';
 import { Queue } from '../queue/models/queue.model';
 import { QueuesService } from '../queue/queues.service';
-//import { SolarData } from '../../@core/data/solar';
+// import { SolarData } from '../../@core/data/solar';
 
 interface CardSettings {
   title: string;
@@ -83,7 +83,7 @@ export class DashboardComponent implements OnDestroy {
 
   queues: Observable<Queue[]>;
 
-  constructor(private themeService: NbThemeService, private queuesService: QueuesService
+  constructor(private themeService: NbThemeService, private queuesService: QueuesService,
               /*private solarService: SolarData*/) {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))

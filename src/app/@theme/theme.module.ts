@@ -56,7 +56,7 @@ const NB_MODULES = [
   NbIconModule,
   NbEvaIconsModule,
   NbCardModule,
-  NbListModule
+  NbListModule,
 ];
 const COMPONENTS = [
   SwitcherComponent,

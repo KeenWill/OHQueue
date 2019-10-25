@@ -8,7 +8,7 @@ xdescribe('NotesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QueuesComponent ]
+      declarations: [ QueuesComponent ],
     })
     .compileComponents();
   }));

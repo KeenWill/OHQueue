@@ -8,10 +8,8 @@ import {
 } from '@angular/fire/firestore';
 import { NotifyService } from '../notify/notify.service';
 
-import { Query } from '@firebase/firestore-types';
-
 import { Observable, of } from 'rxjs';
-import { switchMap, startWith, tap, filter } from 'rxjs/operators';
+import { switchMap, startWith, tap } from 'rxjs/operators';
 
 export interface User {
   uid: string;

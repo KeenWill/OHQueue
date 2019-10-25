@@ -37,8 +37,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  //userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
-  userMenu = [ ];
+  // userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  // userMenu = [ ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -75,9 +75,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  changeTheme(themeName: string) {
+  /*changeTheme(themeName: string) {
     this.themeService.changeTheme(themeName);
-  }
+  }*/
 
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');

@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QuestionComponent } from './question.component';
-import { FormsModule } from '@angular/forms';
 import { QuestionService } from '../question.service';
 
 
@@ -12,7 +11,7 @@ xdescribe('NoteDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ QuestionComponent ],
-      providers: [ { provide: QuestionService, useValue: { }}]
+      providers: [ { provide: QuestionService, useValue: { }}],
     })
     .compileComponents();
   }));
