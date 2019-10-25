@@ -1,0 +1,37 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  .list-card {
+    nb-card-header {
+      border-bottom: none;
+    }
+
+    nb-card-body {
+      padding: 0;
+    }
+  }
+}
+/*
+.queue {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+
+    padding: 10px;
+
+    width: 400px;
+}
+
+.queue-menu {
+    float: right;
+}
+
+.queue-title {
+    float: left;
+}
+
+.spacer {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    color: black;
+}*/

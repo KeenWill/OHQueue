@@ -1,0 +1,27 @@
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item (click)='updateQuestion()'>EDIT</button>
+  <button mat-menu-item color="warn" (click)='deleteQuestion(question?.id)'>DELETE</button>
+  <button mat-menu-item color="primary" (click)='answerQuestion(question?.id)'>ANSWER</button>
+</mat-menu>
+
+<div class="question" [class.strikethrough]="question.served">
+  <div class="asker">{{question.uName}}</div> <!-- {{!!question.served ? "Answered" : "Not Answered"}} -->
+  <ng-container *ngIf="!!user.isTA">
+    <button class="button" mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+    <button *ngIf="!question.served" class="button-left" mat-icon-button (click)='answerQuestion(question?.id)'>
+      <mat-icon>check</mat-icon>
+    </button>
+    <button *ngIf="question.served" class="button-left" mat-icon-button (click)='unanswerQuestion(question?.id)'>
+      <mat-icon>arrow_upward</mat-icon>
+    </button>
+  </ng-container>
+  <ng-container *ngIf="!(user.isTA) && (question.uid == user.uid)">
+    <button class="button" mat-icon-button (click)='updateQuestion()'>
+      <mat-icon>edit</mat-icon>
+    </button>
+  </ng-container>
+  <div *ngIf="user.isTA || (question.uid == user.uid)" class="title" [class.strikethrough]="question.served">Title: {{ question.title }}</div>
+  <div *ngIf="user.isTA || (question.uid == user.uid)" class="desc" [class.strikethrough]="question.served">Description: {{ question.desc }}</div>
+</div>

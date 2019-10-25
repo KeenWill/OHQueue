@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xxxl-3 col-md-6" *ngFor="let queue of queues | async">
+    <ngx-status-card [queue]="queue">
+      <!--<i [ngClass]="nb-list-outline"></i>-->
+    </ngx-status-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <stats></stats> 
+  </div>
+
+  <!--<div class="col-xxxl-9 col-xxl-8 col-lg-7 col-md-6">
+    <ngx-electricity></ngx-electricity>
+  </div>-->
+
+  <div class="col-xxxl-3 col-xxl-4 col-lg-7 col-md-6">
+    <ngx-contacts></ngx-contacts>
+  </div>
+</div>
