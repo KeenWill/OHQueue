@@ -50,8 +50,8 @@ import { LoginComponent } from './login/login.component';
     NbUserModule,
     NbButtonModule,
   ],
-  declarations: [PagesComponent, QueuesComponent, QueueComponent, QuestionComponent, AskQuestionDialog, NewQueueDialog,
-  LoginComponent, EditQuestionDialog],
+  declarations: [PagesComponent, QueuesComponent, QueueComponent, QuestionComponent, AskQuestionDialogComponent,
+    NewQueueDialogComponent, LoginComponent, EditQuestionDialogComponent],
   providers: [QueuesService, QuestionService],
   entryComponents: [AskQuestionDialogComponent, NewQueueDialogComponent, EditQuestionDialogComponent],
 })

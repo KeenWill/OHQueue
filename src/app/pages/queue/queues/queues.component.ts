@@ -5,7 +5,7 @@ import { Queue } from '../models/queue.model';
 import { AuthService } from '../../../@core/auth/auth.service';
 
 import { MatDialog } from '@angular/material/dialog';
-import { NewQueueDialog } from './new-queue-dialog.component';
+import { NewQueueDialogComponent } from './new-queue-dialog.component';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -36,7 +36,7 @@ export class QueuesComponent implements OnInit {
   }
 
   makeQueue() {
-    const dialogRef = this.dialog.open(NewQueueDialog, {
+    const dialogRef = this.dialog.open(NewQueueDialogComponent, {
       width: '250px',
       data: {},
     });

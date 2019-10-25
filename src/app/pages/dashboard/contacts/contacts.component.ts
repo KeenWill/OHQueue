@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User, AuthService } from '../../../@core/auth/auth.service';
 
@@ -9,7 +9,7 @@ import { User, AuthService } from '../../../@core/auth/auth.service';
   styleUrls: ['./contacts.component.scss'],
   templateUrl: './contacts.component.html',
 })
-export class ContactsComponent implements OnDestroy {
+export class ContactsComponent {
 
   // private alive = true;
 
