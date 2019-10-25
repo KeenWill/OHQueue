@@ -1,9 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
-import { takeWhile } from 'rxjs/operators';
-import { forkJoin, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User, AuthService } from '../../../@core/auth/auth.service';
 
-//import { Contacts, RecentUsers, UserData } from '../../../@core/data/users';
+// import { Contacts, RecentUsers, UserData } from '../../../@core/data/users';
 
 @Component({
   selector: 'ngx-contacts',
@@ -12,7 +11,7 @@ import { User, AuthService } from '../../../@core/auth/auth.service';
 })
 export class ContactsComponent implements OnDestroy {
 
-  private alive = true;
+  // private alive = true;
 
   tas: Observable<User[]>;
   students: Observable<User[]>;
@@ -39,7 +38,7 @@ export class ContactsComponent implements OnDestroy {
     this.authService.demoteFromTA(uid);
   }
 
-  ngOnDestroy() {
+  /*ngOnDestroy() {
     this.alive = false;
-  }
+  }*/
 }

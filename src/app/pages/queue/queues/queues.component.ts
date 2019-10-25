@@ -8,18 +8,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewQueueDialog } from './new-queue-dialog.component';
 
 import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'queues',
   templateUrl: './queues.component.html',
-  styleUrls: ['./queues.component.scss']
+  styleUrls: ['./queues.component.scss'],
 })
 export class QueuesComponent implements OnInit {
 
   queues: Observable<Queue[]>;
 
-  constructor(private queuesService: QueuesService, 
+  constructor(private queuesService: QueuesService,
     public auth: AuthService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -32,19 +32,19 @@ export class QueuesComponent implements OnInit {
 
   numOpenQueues(): Observable<number> {
     return this.queues
-      .pipe(map(queues => { return queues.filter(queue => queue.isOpen).length; }))
+      .pipe(map(queues => queues.filter(queue => queue.isOpen).length ));
   }
 
   makeQueue() {
     const dialogRef = this.dialog.open(NewQueueDialog, {
       width: '250px',
-      data: {}
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.queuesService.createQueue(result.name || "", result.desc || "", result.allowGrouping || false);
+      this.queuesService.createQueue(result.name || '', result.desc || '', result.allowGrouping || false);
     });
-    
+
   }
-  
+
 }

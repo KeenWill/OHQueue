@@ -4,7 +4,7 @@
  * Licensed under the Apache License. See LICENSE in the project root for license information.
  */
 import { Component, OnInit } from '@angular/core';
-//import { AnalyticsService } from './@core/utils/analytics.service';
+// import { AnalyticsService } from './@core/utils/analytics.service';
 
 @Component({
   selector: 'ngx-app',
@@ -16,6 +16,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.analytics.trackPageViews();
+    // this.analytics.trackPageViews();
   }
 }

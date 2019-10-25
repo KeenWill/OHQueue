@@ -1,4 +1,4 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthGuard } from './auth.guard';
@@ -12,13 +12,13 @@ xdescribe('AuthGuard', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        AngularFireAuthModule
+        AngularFireAuthModule,
       ],
       providers: [
         AuthGuard,
         { provide: AuthService, useValue: { afAuth: { } } },
-        { provide: NotifyService, useValue: { } }
-      ]
+        { provide: NotifyService, useValue: { } },
+      ],
     });
   });
 

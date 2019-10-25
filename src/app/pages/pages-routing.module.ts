@@ -1,4 +1,4 @@
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
@@ -15,12 +15,12 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       component: DashboardComponent,
-      canActivate: [AuthGuard, TAGuard] 
+      canActivate: [AuthGuard, TAGuard],
     },
     {
       path: 'queues',
       component: QueuesComponent,
-      canActivate: [AuthGuard] 
+      canActivate: [AuthGuard],
     },
     {
       path: 'login',

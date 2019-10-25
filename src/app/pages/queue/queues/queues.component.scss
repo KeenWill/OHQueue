@@ -1,5 +1,14 @@
 @import '../../../@theme/styles/themes';
 
+/*
+.queue {
+    display: table-cell;
+}
+
+.make-queue {
+    float: right;
+}*/
+
 @include nb-install-component() {
   .list-card {
     nb-card-header {
@@ -11,11 +20,3 @@
     }
   }
 }
-/*
-.queue {
-    display: table-cell;
-}
-
-.make-queue {
-    float: right;
-}*/

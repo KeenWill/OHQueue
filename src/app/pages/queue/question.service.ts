@@ -1,27 +1,26 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 
 import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Question } from './models/question.model';
-import { Queue } from './models/queue.model';
 import { User } from '../../@core/auth/auth.service';
 
 @Injectable()
 export class QuestionService {
 
-  //questionCollection: AngularFirestoreCollection<Question>;
-  //questionDocument:   AngularFirestoreDocument<Question>;
+  // questionCollection: AngularFirestoreCollection<Question>;
+  // questionDocument:   AngularFirestoreDocument<Question>;
 
   constructor(private afs: AngularFirestore) {
-    //this.questionCollection = this.afs.collection<Question>('questions', (ref) => ref.orderBy('time', 'desc'));
+    // this.questionCollection = this.afs.collection<Question>('questions', (ref) => ref.orderBy('time', 'desc'));
   }
 
   getQuestions(queueId): Observable<Question[]> {
     // ['added', 'modified', 'removed']
-    return this.afs.collection<Question>(`/queues/${queueId}/questions/`, 
+    return this.afs.collection<Question>(`/queues/${queueId}/questions/`,
     ref => ref.orderBy('timestamp'))
     .snapshotChanges().pipe(
       map((actions) => {
@@ -29,13 +28,13 @@ export class QuestionService {
           const data = a.payload.doc.data();
           return { id: a.payload.doc.id, ...data };
         });
-      })
+      }),
     );
   }
 
   /*getAnsweredQuestions(queueId): Observable<Question[]> {
     // ['added', 'modified', 'removed']
-    return this.afs.collection<Question>(`/queues/${queueId}/questions/`, 
+    return this.afs.collection<Question>(`/queues/${queueId}/questions/`,
     ref => ref.orderBy('timestamp', 'desc'))//.where('served', '==', true))
     .snapshotChanges().pipe(
       map((actions) => {
@@ -56,19 +55,19 @@ export class QuestionService {
       uid: asker.uid,
       uName: asker.displayName,
       queueId,
-      title: title || "",
-      desc: desc || "",
+      title: title || '',
+      desc: desc || '',
       timestamp: new Date().getTime(),
-      served: false
+      served: false,
     } as Question;
     return this.afs.collection<Question>(`queues/${queueId}/questions/`).add(question);
   }
 
   answerQuestion(id: string, queueId: string, taUid: string): Promise<void> {
     return this.getQuestion(queueId, id).update(
-      { served: true, 
+      { served: true,
         servedTime: new Date().getTime(),
-        taAnswererUid: taUid
+        taAnswererUid: taUid,
       });
   }
 

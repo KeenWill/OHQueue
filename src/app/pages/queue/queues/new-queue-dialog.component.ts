@@ -5,14 +5,16 @@ import { Queue } from '../models/queue.model';
 @Component({
   selector: 'new-queue-dialog',
   templateUrl: './new-queue-dialog.component.html',
-  styleUrls: ['./new-queue-dialog.component.scss']
+  styleUrls: ['./new-queue-dialog.component.scss'],
 })
-export class NewQueueDialog {
+export class NewQueueDialogComponent {
 
     constructor(
         public dialogRef: MatDialogRef<NewQueueDialog>,
-        @Inject(MAT_DIALOG_DATA) public queue: Queue) {}
-    
+        @Inject(MAT_DIALOG_DATA) public queue: Queue) {
+
+    }
+
     onCloseClick(): void {
         this.dialogRef.close();
     }

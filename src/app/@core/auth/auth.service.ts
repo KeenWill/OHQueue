@@ -4,20 +4,18 @@ import { auth } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
-  AngularFirestoreDocument
+  AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { NotifyService } from '../notify/notify.service';
 
-import { Query } from '@firebase/firestore-types'
-
 import { Observable, of } from 'rxjs';
-import { switchMap, startWith, tap, filter } from 'rxjs/operators';
+import { switchMap, startWith, tap } from 'rxjs/operators';
 
 export interface User {
   uid: string;
   email?: string | null;
   displayName?: string;
-  isTA?: boolean
+  isTA?: boolean;
 }
 
 @Injectable()
@@ -29,7 +27,7 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
-    private notify: NotifyService
+    private notify: NotifyService,
   ) {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -40,7 +38,7 @@ export class AuthService {
         }
       }),
       tap(user => localStorage.setItem('user', JSON.stringify(user))),
-      startWith(JSON.parse(localStorage.getItem('user')))
+      startWith(JSON.parse(localStorage.getItem('user'))),
     );
   }
 
@@ -153,14 +151,14 @@ export class AuthService {
   // Sets user data to firestore after succesful login
   private updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
-      `users/${user.uid}`
+      `users/${user.uid}`,
     );
 
     const data: User = {
       uid: user.uid,
       email: user.email || null,
       displayName: user.displayName || 'student',
-      isTA: user.isTA || false
+      isTA: user.isTA || false,
     };
     return userRef.set(data);
   }

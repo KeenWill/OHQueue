@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { QuestionService } from '../question.service';
 import { Question } from '../models/question.model';
 import { User } from '../../../@core/auth/auth.service';
-import { EditQuestionDialog } from './edit-question-dialog.component';
+import { EditQuestionDialogComponent } from './edit-question-dialog.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -27,26 +27,26 @@ export class QuestionComponent {
   }*/
 
   deleteQuestion(id: string) {
-    //this.questionService.deleteQuestion(id);
-    console.log("deleting question")
+    // this.questionService.deleteQuestion(id);
+    console.log('deleting question');
   }
 
   answerQuestion(id: string) {
-    //this.questionService.deleteQuestion(id);
+    // this.questionService.deleteQuestion(id);
     this.questionService.answerQuestion(id, this.question.queueId, this.user.uid);
-    console.log("answering question")
+    console.log('answering question');
   }
 
   unanswerQuestion(id: string) {
-    //this.questionService.deleteQuestion(id);
+    // this.questionService.deleteQuestion(id);
     this.questionService.unanswerQuestion(id, this.question.queueId);
-    console.log("unanswering question")
+    console.log('unanswering question');
   }
 
   updateQuestion() {
-    const dialogRef = this.dialog.open(EditQuestionDialog, {
+    const dialogRef = this.dialog.open(EditQuestionDialogComponent, {
       width: '250px',
-      data: {question: this.question}
+      data: { question: this.question },
     });
 
     dialogRef.afterClosed().subscribe(result => {

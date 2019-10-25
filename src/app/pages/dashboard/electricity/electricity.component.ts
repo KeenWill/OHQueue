@@ -1,9 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
-
-//import { Electricity, ElectricityChart, ElectricityData } from '../../../@core/data/electricity';
+// import { Electricity, ElectricityChart, ElectricityData } from '../../../@core/data/electricity';
 import { takeWhile } from 'rxjs/operators';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'ngx-electricity',
@@ -21,7 +19,7 @@ export class ElectricityComponent implements OnDestroy {
   types = ['week', 'month', 'year'];
 
   currentTheme: string;
-  themeSubscription: any;
+  // themeSubscription: any;
 
   constructor(/*private electricityService: ElectricityData,*/
               private themeService: NbThemeService) {

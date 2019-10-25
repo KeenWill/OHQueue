@@ -1,7 +1,7 @@
 /**
  * @license
  * Copyright William Goeller. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
+ * Licensed under the Apache License. See LICENSE in the project root for license information.
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,8 +27,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
-import { PagesModule } from './pages/pages.module';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,8 +38,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
     ThemeModule.forRoot(),
 
-    //QueueModule,
-    //PagesModule,
+    // QueueModule,
+    // PagesModule,
 
     AngularFireModule.initializeApp(environment.firebase, 'OHQueue'),
     AngularFirestoreModule,
@@ -60,8 +58,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
     CoreModule,
-    //{ provide: LocationStrategy, useClass: HashLocationStrategy },
-    //CoreModule.forRoot(),
+    // { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // CoreModule.forRoot(),
   ],
   bootstrap: [AppComponent],
 })

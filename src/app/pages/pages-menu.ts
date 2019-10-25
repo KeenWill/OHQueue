@@ -1,14 +1,14 @@
 import { NbMenuItem } from '@nebular/theme';
 import { User } from '../@core/auth/auth.service';
-import { Observable } from 'rxjs'; 
-import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const notLoggedIn: NbMenuItem[] = [
   {
     title: 'Login',
     icon: 'lock-outline',
     link: '/pages/login',
-  }
+  },
 ];
 
 const loggedInAsStudent: NbMenuItem[] = [
@@ -21,7 +21,7 @@ const loggedInAsStudent: NbMenuItem[] = [
     title: 'Login',
     icon: 'lock-outline',
     link: '/pages/login',
-  }
+  },
 ];
 
 const loggedInAsTA: NbMenuItem[] = [
@@ -40,9 +40,9 @@ const loggedInAsTA: NbMenuItem[] = [
     title: 'Login',
     icon: 'lock-outline',
     link: '/pages/login',
-  }
+  },
 ];
 
 export function MENU_ITEMS(user: Observable<User>): Observable<NbMenuItem[]> {
-  return user.pipe(map((user) => user ? ( user.isTA ? loggedInAsTA : loggedInAsStudent ) : notLoggedIn));
+  return user.pipe(map((u) => u ? ( u.isTA ? loggedInAsTA : loggedInAsStudent ) : notLoggedIn));
 }

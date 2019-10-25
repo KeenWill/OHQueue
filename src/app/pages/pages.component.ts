@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MENU_ITEMS } from './pages-menu';
 import { AuthService } from '../@core/auth/auth.service';
 import { NbMenuItem } from '@nebular/theme';
-import { Observable } from 'rxjs'; 
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ngx-pages',
@@ -19,7 +19,7 @@ export class PagesComponent {
 
   menu: Observable<NbMenuItem[]>;
 
-  constructor(public authService: AuthService) { 
+  constructor(public authService: AuthService) {
     this.menu = MENU_ITEMS(this.authService.user);
   }
 }

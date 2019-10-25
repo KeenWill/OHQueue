@@ -5,14 +5,14 @@ import { Question } from '../models/question.model';
 @Component({
   selector: 'edit-question-dialog',
   templateUrl: './edit-question-dialog.component.html',
-  styleUrls: ['./edit-question-dialog.component.scss']
+  styleUrls: ['./edit-question-dialog.component.scss'],
 })
-export class EditQuestionDialog {
+export class EditQuestionDialogComponent {
 
     constructor(
         public dialogRef: MatDialogRef<EditQuestionDialog>,
         @Inject(MAT_DIALOG_DATA) public question: Question) { }
-    
+
     onCloseClick(): void {
         this.dialogRef.close();
     }
