@@ -28,7 +28,7 @@ before_script:
 
 script:
   - npm run lint:ci
-  - npm run test
+  #- npm run test
   - npm run build
 
 #git:
