@@ -41,9 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# CI/CD
-.travis.yml
-
 # Environment
 /src/environments/environment.prod.ts
 /src/environments/environment.ts
