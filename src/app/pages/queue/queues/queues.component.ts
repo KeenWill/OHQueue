@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewQueueDialogComponent } from './new-queue-dialog.component';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {map, reduce} from 'rxjs/operators';
 
 @Component({
   selector: 'queues',
@@ -18,18 +18,19 @@ import { map } from 'rxjs/operators';
 export class QueuesComponent implements OnInit {
 
   queues: Observable<Queue[]>;
+  noOpenQueues: Observable<boolean>;
 
   constructor(private queuesService: QueuesService,
     public auth: AuthService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.queues = this.queuesService.getQueues();
+    this.noOpenQueues = this.queues.pipe(map(queues => queues.reduce((acc, queue) => acc && !queue.isOpen, true)));
   }
 
   numQueues(): Observable<number> {
     return this.queues.pipe(map(queues => queues.length ));
   }
-
   numOpenQueues(): Observable<number> {
     return this.queues
       .pipe(map(queues => queues.filter(queue => queue.isOpen).length ));

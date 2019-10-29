@@ -13,6 +13,10 @@
     </nb-card-body>
   </nb-card>
 
+  <p *ngIf="noOpenQueues | async">
+    Sorry, there are no queues open right now. Please check back later.
+  </p>
+
   <div class="lists row">
     <div class="col-md-12 col-lg-6 col-xxxl-6" *ngFor="let queue of queues | async">
       <queue class="queue" *ngIf="queue.isOpen || user.isTA" [queue]="queue"></queue>
