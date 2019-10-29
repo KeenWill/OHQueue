@@ -2,7 +2,7 @@
   <div *ngIf="user.isTA; then ta else student">
     <!-- template will replace this div -->
   </div>
-  
+
   <mat-menu #appMenu="matMenu">
     <button mat-menu-item class="queue-menu" *ngIf="!queue.isOpen" (click)="openQueue()">Open Queue</button>
     <button mat-menu-item class="queue-menu" *ngIf="queue.isOpen" (click)="closeQueue()">Close Queue</button>
@@ -11,7 +11,7 @@
     <button mat-menu-item class="queue-menu" (click)="askQuestion(user)">Ask Question</button>
     <button mat-menu-item class="queue-menu" (click)="deleteQueue()">Delete Queue</button>
   </mat-menu>
-  
+
   <!-- User is student -->
   <ng-template #student>
     <div *ngIf="auth.user | async as user">
@@ -29,9 +29,9 @@
       </nb-card-body>
     </div>
   </ng-template>
-  
+
   <!-- User is TA -->
-  <ng-template #ta>    
+  <ng-template #ta>
     <nb-card-header class="queue-title">
       {{ queue.name }} ({{ queue.isOpen ? "Open" : "Closed" }})
       <button style="float: right;" mat-icon-button [matMenuTriggerFor]="appMenu">
@@ -48,9 +48,6 @@
         </nb-list-item>
         <!--<nb-list-item *ngIf="showAnsweredQuestions">Answered Questions:</nb-list-item>-->
         <!--<ng-container *ngIf="!!showAnsweredQuestions">-->
-        <nb-list-item  *ngFor="let question of questions | async">
-          <question [question]="question" [user]="user"></question>
-        </nb-list-item>
         <!--</ng-container>-->
       </nb-list>
     </nb-card-body>
