@@ -33,7 +33,7 @@ export class QueueComponent implements OnInit {
 
   ngOnInit() {
     this.allQuestions = this.questionService.getQuestions(this.queue.id);
-    this.unansweredQuestions = this.questionService.getQuestions(this.queue.id).pipe(map(questions =>
+    this.unansweredQuestions = this.allQuestions.pipe(map(questions =>
         questions.filter(question => !question.served)));
   }
 
