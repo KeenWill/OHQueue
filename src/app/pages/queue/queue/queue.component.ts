@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { QuestionService } from '../question.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Queue } from '../models/queue.model';
 import { Question } from '../models/question.model';
 
@@ -10,6 +10,7 @@ import { AuthService } from '../../../@core/auth/auth.service';
 
 import { User } from '../../../@core/auth/auth.service';
 import { QueuesService } from '../queues.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'queue',
@@ -20,30 +21,20 @@ export class QueueComponent implements OnInit {
 
   @Input() queue: Queue;
 
-  questions: Observable<Question[]>;
-  // sansweredQuestionsObs: Observable<Question[]>;
-  // answeredQuestions: Observable<Question[]>;
-
   showAnswered: boolean = true;
+  private unansweredQuestions: Observable<Question[]>;
+  private allQuestions: Observable<Question[]>;
 
   constructor(
     private questionService: QuestionService,
     private queuesService: QueuesService,
     public auth: AuthService,
-    public dialog: MatDialog) {
-
-      this.showAnswered = true;
-
-  }
+    public dialog: MatDialog) { }
 
   ngOnInit() {
-    // this.unansweredQuestions = this.questionService.getUnansweredQuestions(this.queue.id);
-    // this.answeredQuestionsObs = this.questionService.getAnsweredQuestions(this.queue.id);
-    // this.answeredQuestions = this.answeredQuestionsObs;
-
-    this.questions = this.questionService.getQuestions(this.queue.id);
-
-    // this.unansweredQuestions.subscribe((q) => { console.log(JSON.stringify(q))})
+    this.allQuestions = this.questionService.getQuestions(this.queue.id);
+    this.unansweredQuestions = this.allQuestions.pipe(map(questions =>
+        questions.filter(question => !question.served)));
   }
 
   askQuestion(asker: User) {
