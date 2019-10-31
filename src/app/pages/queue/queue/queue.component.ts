@@ -49,7 +49,7 @@ export class QueueComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.questionService.createQuestion(asker, this.queue.id, result.title || '', result.desc || '');
-      this.showToast('Asked Question', !!result.title ? result.title : undefined);
+      this.showToast('Asked Question', result.title || null);
     });
   }
 
