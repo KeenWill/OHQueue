@@ -35,4 +35,4 @@ const loggedInAsTA: NbMenuItem[] = [
 
 export function MENU_ITEMS(user: Observable<User>): Observable<NbMenuItem[]> {
   return user.pipe(map((u) => u ? ( u.isTA ? loggedInAsTA : loggedInAsStudent ) : notLoggedIn));
-} 
+}
