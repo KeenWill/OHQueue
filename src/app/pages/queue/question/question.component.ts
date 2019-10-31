@@ -33,7 +33,7 @@ export class QuestionComponent {
 
   deleteQuestion(id: string) {
     // this.questionService.deleteQuestion(id);
-    this.showToast('Deleted Question', !!this.question.title ? this.question.title : undefined);
+    this.showToast('Deleted Question', this.question.title || null);
   }
 
   answerQuestion(id: string) {
