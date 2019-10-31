@@ -13,7 +13,7 @@
     </nb-card-body>
   </nb-card>
 
-  <p *ngIf="noOpenQueues | async">
+  <p *ngIf="(noOpenQueues | async) && !user.isTA">
     Sorry, there are no queues open right now. Please check back later.
   </p>
 
