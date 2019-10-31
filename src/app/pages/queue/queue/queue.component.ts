@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Queue } from '../models/queue.model';
 import { Question } from '../models/question.model';
 
-import {AskQuestionDialogComponent} from './ask-question-dialog.component';
+import { AskQuestionDialogComponent } from './ask-question-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from '../../../@core/auth/auth.service';
 
