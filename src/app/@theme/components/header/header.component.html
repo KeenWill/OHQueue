@@ -27,8 +27,9 @@
     </nb-action>-->
     <nb-action *ngIf="auth.user | async as user">
       <nb-user
+        (click)="auth.signOut()"
         [name]="user.displayName">
-      </nb-user>  
+      </nb-user>
     </nb-action>
   </nb-actions>
 </div>
