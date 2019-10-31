@@ -63,7 +63,7 @@ export class QuestionComponent {
   }
 
   showToast(title: string, message?: string): void {
-    this.toastrService.show(!!message ? message : '', title, { limit: 3, status: 'success' });
+    this.toastrService.show(message || '', title, { limit: 3, status: 'success' });
   }
 
 }
