@@ -31,25 +31,20 @@ export class QueueComponent implements OnInit {
         public auth: AuthService,
         public dialog: MatDialog) {
     }
+  
+    timestampComparison(qa: Question, qb: Question): number {
+      if (qa.timeCreated < qb.timeCreated) return 1;
+      if (qa.timeCreated > qb.timeCreated) return -1;
+      return 0;
+    }
+  
+    servedComparison(qa: Question, qb: Question) {
+      if (qa.served && qb.served) return 0;
+      if (qa.served && !qb.served) return 1;
+      return -1;
+    }
 
     ngOnInit() {
-        const timestampComparison = (qa, qb) => {
-            if (qa.timeCreated < qb.timeCreated) {
-                return 1;
-            } else if (qa.timeCreated > qb.timeCreated) {
-                return -1;
-            }
-            return 0;
-        };
-
-        const servedComparison = (qa, qb) => {
-            if (qa.served && qb.served) {
-                return 0;
-            } else if (qa.served && !qb.served) {
-                return 1;
-            }
-            return -1;
-        };
         this.allQuestions = this.questionService.getQuestions(this.queue.id).pipe(map(questions => questions
             .sort((qa, qb) => timestampComparison(qa, qb) + 10 * servedComparison(qa, qb))));
         this.unansweredQuestions = this.allQuestions.pipe(map(questions =>
