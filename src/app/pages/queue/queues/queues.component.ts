@@ -8,7 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewQueueDialogComponent } from './new-queue-dialog.component';
 
 import { Observable } from 'rxjs';
-import {map, reduce} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'queues',
@@ -20,8 +21,12 @@ export class QueuesComponent implements OnInit {
   queues: Observable<Queue[]>;
   noOpenQueues: Observable<boolean>;
 
-  constructor(private queuesService: QueuesService,
-    public auth: AuthService, public dialog: MatDialog) { }
+  constructor(
+    private queuesService: QueuesService,
+    public auth: AuthService,
+    private toastrService: NbToastrService,
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
     this.queues = this.queuesService.getQueues();
@@ -31,6 +36,7 @@ export class QueuesComponent implements OnInit {
   numQueues(): Observable<number> {
     return this.queues.pipe(map(queues => queues.length ));
   }
+
   numOpenQueues(): Observable<number> {
     return this.queues
       .pipe(map(queues => queues.filter(queue => queue.isOpen).length ));
@@ -44,8 +50,13 @@ export class QueuesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.queuesService.createQueue(result.name || '', result.desc || '', result.allowGrouping || false);
+      this.showToast('Created New Queue', !!result.name ? result.name : undefined);
     });
 
+  }
+
+  showToast(title: string, message?: string): void {
+    this.toastrService.show(!!message ? message : '', title, { limit: 3, status: 'success' });
   }
 
 }

@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { Queue } from '../models/queue.model';
 import { Question } from '../models/question.model';
 
+import { NbToastrService } from '@nebular/theme';
+
 import { AskQuestionDialogComponent } from './ask-question-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../../@core/auth/auth.service';
@@ -28,6 +30,7 @@ export class QueueComponent implements OnInit {
   constructor(
     private questionService: QuestionService,
     private queuesService: QueuesService,
+    private toastrService: NbToastrService,
     public auth: AuthService,
     public dialog: MatDialog) { }
 
@@ -38,6 +41,7 @@ export class QueueComponent implements OnInit {
   }
 
   askQuestion(asker: User) {
+    this.showToast('Asked Question Answered Questions');
     const dialogRef = this.dialog.open(AskQuestionDialogComponent, {
       width: '250px',
       data: {},
@@ -45,34 +49,39 @@ export class QueueComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.questionService.createQuestion(asker, this.queue.id, result.title || '', result.desc || '');
+      this.showToast('Asked Question', !!result.title ? result.title : undefined);
     });
   }
 
   showAnsweredQuestions() {
+    this.showToast('Revealing Answered Questions');
     this.showAnswered = true;
     // this.answeredQuestions = this.answeredQuestionsObs;
   }
 
   hideAnsweredQuestions() {
+    this.showToast('Hiding Answered Questions');
     this.showAnswered = false;
     // this.answeredQuestions = of([]);
   }
 
-  answerQuestion() {
-    // this.questionService.answerQuestion(this.queue.id);
-    console.log('answering question');
-  }
-
   openQueue() {
+    this.showToast('Opened Queue');
     this.queuesService.openQueue(this.queue.id);
   }
 
   closeQueue() {
+    this.showToast('Closed Queue');
     this.queuesService.closeQueue(this.queue.id);
   }
 
   deleteQueue() {
+    this.showToast('Deleted Queue');
     this.queuesService.deleteQueue(this.queue.id);
+  }
+
+  showToast(title: string, message?: string): void {
+    this.toastrService.show(!!message ? message : '', title, { limit: 3, status: 'success' });
   }
 
 }
