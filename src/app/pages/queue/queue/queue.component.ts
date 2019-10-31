@@ -1,16 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { QuestionService } from '../question.service';
-import { Observable, of } from 'rxjs';
-import { Queue } from '../models/queue.model';
-import { Question } from '../models/question.model';
+import {Component, OnInit, Input} from '@angular/core';
+import {QuestionService} from '../question.service';
+import {Observable, of} from 'rxjs';
+import {Queue} from '../models/queue.model';
+import {Question} from '../models/question.model';
 
-import { AskQuestionDialogComponent } from './ask-question-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { AuthService } from '../../../@core/auth/auth.service';
+import {AskQuestionDialogComponent} from './ask-question-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {AuthService} from '../../../@core/auth/auth.service';
 
-import { User } from '../../../@core/auth/auth.service';
-import { QueuesService } from '../queues.service';
-import { map } from 'rxjs/operators';
+import {User} from '../../../@core/auth/auth.service';
+import {QueuesService} from '../queues.service';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'queue',
@@ -29,12 +29,26 @@ export class QueueComponent implements OnInit {
     private questionService: QuestionService,
     private queuesService: QueuesService,
     public auth: AuthService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog) {
+  }
+
+  static timestampComparison(qa: Question, qb: Question): number {
+    if (qa.timestamp < qb.timestamp) return 1;
+    if (qa.timestamp > qb.timestamp) return -1;
+    return 0;
+  }
+
+ static servedComparison(qa: Question, qb: Question) {
+    if (qa.served && qb.served) return 0;
+    if (qa.served && !qb.served) return 1;
+    return -1;
+  }
 
   ngOnInit() {
-    this.allQuestions = this.questionService.getQuestions(this.queue.id);
+    this.allQuestions = this.questionService.getQuestions(this.queue.id).pipe(map(questions => questions
+      .sort((qa, qb) => QueueComponent.timestampComparison(qa, qb) + 10 * QueueComponent.servedComparison(qa, qb))));
     this.unansweredQuestions = this.allQuestions.pipe(map(questions =>
-        questions.filter(question => !question.served)));
+      questions.filter(question => !question.served)));
   }
 
   askQuestion(asker: User) {
