@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {QuestionService} from '../question.service';
 import { Observable, of } from 'rxjs';
 import {Queue} from '../models/queue.model';
-import {Question} from '../models/question.model';
+import { Question } from '../models/question.model';
 
 import {AskQuestionDialogComponent} from './ask-question-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
