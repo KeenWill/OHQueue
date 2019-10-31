@@ -9,6 +9,10 @@
     float: right;
 }*/
 
+::ng-deep nb-layout-column {
+  height: 80vw;
+}
+
 @include nb-install-component() {
   .list-card {
     nb-card-header {

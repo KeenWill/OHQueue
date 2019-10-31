@@ -42,6 +42,10 @@
     }
 }
 
+::ng-deep nb-layout-column {
+  height: 80vw;
+}
+
 /*
 .question-card {
     margin-top: 10px;
