@@ -45,7 +45,7 @@ export class QuestionComponent {
   unanswerQuestion(id: string) {
     // this.questionService.deleteQuestion(id);
     this.questionService.unanswerQuestion(id, this.question.queueId);
-    this.showToast('Unanswered Question', !!this.question.title ? this.question.title : undefined);
+    this.showToast('Unanswered Question', this.question.title || null);
   }
 
   updateQuestion() {
