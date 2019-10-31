@@ -50,7 +50,7 @@ export class QueuesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.queuesService.createQueue(result.name || '', result.desc || '', result.allowGrouping || false);
-      this.showToast('Created New Queue', !!result.name ? result.name : undefined);
+      this.showToast('Created New Queue', result.name || null);
     });
 
   }
