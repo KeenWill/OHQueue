@@ -8,7 +8,7 @@ import {AskQuestionDialogComponent} from './ask-question-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from '../../../@core/auth/auth.service';
 
-import {User} from '../../../@core/auth/auth.service';
+import { User } from '../../../@core/auth/auth.service';
 import {QueuesService} from '../queues.service';
 import {map} from 'rxjs/operators';
 
