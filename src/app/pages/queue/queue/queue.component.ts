@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {QuestionService} from '../question.service';
 import {Observable, of} from 'rxjs';
 import {Queue} from '../models/queue.model';
