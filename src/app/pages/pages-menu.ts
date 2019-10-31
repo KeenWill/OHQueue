@@ -17,11 +17,6 @@ const loggedInAsStudent: NbMenuItem[] = [
     icon: 'home-outline',
     link: '/pages/queues',
   },
-  {
-    title: 'Login',
-    icon: 'lock-outline',
-    link: '/pages/login',
-  },
 ];
 
 const loggedInAsTA: NbMenuItem[] = [
@@ -35,11 +30,6 @@ const loggedInAsTA: NbMenuItem[] = [
     title: 'Queues',
     icon: 'home-outline',
     link: '/pages/queues',
-  },
-  {
-    title: 'Login',
-    icon: 'lock-outline',
-    link: '/pages/login',
   },
 ];
 
