@@ -8,10 +8,12 @@ import { Question } from '../models/question.model';
   styleUrls: ['./edit-question-dialog.component.scss'],
 })
 export class EditQuestionDialogComponent {
-
+    private question: Question;
     constructor(
         public dialogRef: MatDialogRef<EditQuestionDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public question: Question) { }
+        @Inject(MAT_DIALOG_DATA) public data: any) {
+            this.question = data.question;
+        }
 
     onCloseClick(): void {
         this.dialogRef.close();
