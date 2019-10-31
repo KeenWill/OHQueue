@@ -25,11 +25,15 @@
                [picture]="user?.picture">
       </nb-user>
     </nb-action>-->
+
     <nb-action *ngIf="auth.user | async as user">
-      <nb-user
-        (click)="auth.signOut()"
-        [name]="user.displayName">
+      <nb-user [name]="user.displayName" [matMenuTriggerFor]="userMenu">
       </nb-user>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="auth.signOut()">
+          <span>Logout</span>
+        </button>
+      </mat-menu>
     </nb-action>
   </nb-actions>
 </div>
