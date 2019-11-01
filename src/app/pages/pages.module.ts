@@ -22,7 +22,7 @@ import { NewQueueDialogComponent } from './queue/queues/new-queue-dialog.compone
 import { QueuesService } from './queue/queues.service';
 import { QuestionService } from './queue/question.service';
 import { LoginComponent } from './login/login.component';
-import {PromoteStudentDialogComponent} from './dashboard/contacts/promote-student-dialog-component';
+import { PromoteStudentDialogComponent } from './dashboard/contacts/promote-student-dialog-component';
 
 @NgModule({
   imports: [
