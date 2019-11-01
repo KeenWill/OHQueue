@@ -22,6 +22,7 @@ import { NewQueueDialogComponent } from './queue/queues/new-queue-dialog.compone
 import { QueuesService } from './queue/queues.service';
 import { QuestionService } from './queue/question.service';
 import { LoginComponent } from './login/login.component';
+import {PromoteStudentDialogComponent} from './dashboard/contacts/promote-student-dialog-component';
 
 @NgModule({
   imports: [
@@ -51,9 +52,10 @@ import { LoginComponent } from './login/login.component';
     NbButtonModule,
   ],
   declarations: [PagesComponent, QueuesComponent, QueueComponent, QuestionComponent, AskQuestionDialogComponent,
-    NewQueueDialogComponent, LoginComponent, EditQuestionDialogComponent],
+    NewQueueDialogComponent, LoginComponent, EditQuestionDialogComponent, PromoteStudentDialogComponent],
   providers: [QueuesService, QuestionService],
-  entryComponents: [AskQuestionDialogComponent, NewQueueDialogComponent, EditQuestionDialogComponent],
+  entryComponents: [AskQuestionDialogComponent, NewQueueDialogComponent,
+    EditQuestionDialogComponent, PromoteStudentDialogComponent],
 })
 export class PagesModule {
 }
