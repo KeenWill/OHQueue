@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User, AuthService } from '../../../@core/auth/auth.service';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material';
 import {PromoteStudentDialogComponent} from './promote-student-dialog-component';
 
 // import { Contacts, RecentUsers, UserData } from '../../../@core/data/users';
