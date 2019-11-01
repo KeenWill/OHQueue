@@ -30,7 +30,8 @@ export class QueuesComponent implements OnInit {
 
   ngOnInit() {
     this.queues = this.queuesService.getQueues();
-    this.noOpenQueues = this.queues.pipe(map(queues => queues.reduce((acc, queue) => acc && !queue.isOpen, true)));
+    this.noOpenQueues = this.queues.pipe(map(queues => queues
+      .reduce((acc, queue) => acc && !queue.isOpen && !queue.containsUserQuestion, true)));
   }
 
   numQueues(): Observable<number> {

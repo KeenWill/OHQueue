@@ -19,7 +19,7 @@ export class QueuesService {
       map((actions) => {
         return actions.map((a) => {
           const data = a.payload.doc.data();
-          return { id: a.payload.doc.id, ...data };
+          return { id: a.payload.doc.id, containsUserQuestion: true, ...data };
         });
       }),
     );
