@@ -5,5 +5,4 @@ export interface Queue {
     desc: string;
     allowGrouping: boolean;
     containsUserQuestion?: boolean;
-    containsUserQuestionUnknown?: boolean;
 }

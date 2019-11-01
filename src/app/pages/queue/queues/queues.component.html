@@ -20,7 +20,7 @@
   <div class="lists row">
     <div class="col-md-12 col-lg-6 col-xxxl-6" *ngFor="let queue of queues | async">
       <queue [user]="user" class="queue"
-             *ngIf="queue.isOpen || user.isTA || queue.containsUserQuestion || queue.containsUserQuestionUnknown"
+             *ngIf="queue.isOpen || user.isTA || queue.containsUserQuestion"
              [queue]="queue"></queue>
     </div>
   </div>

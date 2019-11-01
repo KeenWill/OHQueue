@@ -57,7 +57,6 @@ export class QueueComponent implements OnInit {
       .reduce((acc, question) => acc || question.uid === this.user.uid, false)))
       .subscribe(containsUserQuestion => {
           this.queue.containsUserQuestion = containsUserQuestion;
-          this.queue.containsUserQuestionUnknown = false;
       });
   }
 
