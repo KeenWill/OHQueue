@@ -22,6 +22,7 @@ import {map} from 'rxjs/operators';
 export class QueueComponent implements OnInit {
 
   @Input() queue: Queue;
+  @Input() user: User;
 
   showAnswered: boolean = true;
   private unansweredQuestions: Observable<Question[]>;
@@ -32,8 +33,7 @@ export class QueueComponent implements OnInit {
     private queuesService: QueuesService,
     private toastrService: NbToastrService,
     public auth: AuthService,
-    public dialog: MatDialog) {
-  }
+    public dialog: MatDialog) { }
 
   static timestampComparison(qa: Question, qb: Question): number {
     if (qa.timestamp < qb.timestamp) return 1;
@@ -52,6 +52,13 @@ export class QueueComponent implements OnInit {
       .sort((qa, qb) => QueueComponent.timestampComparison(qa, qb) + 10 * QueueComponent.servedComparison(qa, qb))));
     this.unansweredQuestions = this.allQuestions.pipe(map(questions =>
       questions.filter(question => !question.served)));
+    // determine if the user's question is in the queue
+    this.allQuestions.pipe(map(questions => questions
+      .reduce((acc, question) => acc || question.uid === this.user.uid, false)))
+      .subscribe(containsUserQuestion => {
+          this.queue.containsUserQuestion = containsUserQuestion;
+          this.queue.containsUserQuestionUnknown = false;
+      });
   }
 
   askQuestion(asker: User) {
