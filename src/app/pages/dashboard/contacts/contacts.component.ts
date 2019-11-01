@@ -34,8 +34,8 @@ export class ContactsComponent {
 
   promote(uid: string) {
     this.dialog.open(PromoteStudentDialogComponent, {
-      height: '400px',
-      width: '600px',
+      height: '200px',
+      width: '400px',
       data: {promoteStudent: () => this.authService.promoteToTA(uid)},
     });
   }
