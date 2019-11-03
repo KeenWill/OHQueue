@@ -21,7 +21,7 @@
       </nb-card-header>
       <nb-card-body>
         <nb-list>
-          <nb-list-item *ngFor="let question of (showAnswered ? allQuestions : unansweredQuestions) | async">
+          <nb-list-item *ngFor="let question of ((showAnswered ? allQuestions : unansweredQuestions) | async).reverse()">
             <question [question]="question" [user]="user"></question>
           </nb-list-item>
           <nb-list-item><button nbButton fullWidth outline (click)="askQuestion(user, user.displayName)">Ask Question</button></nb-list-item>
@@ -43,7 +43,7 @@
     <nb-card-body>
       <nb-list *ngIf="auth.user | async as user">
         <!--<nb-list-item *ngIf="showAnsweredQuestions">Unanswered Questions:</nb-list-item>-->
-        <nb-list-item *ngFor="let question of (showAnswered ? allQuestions : unansweredQuestions) | async">
+        <nb-list-item *ngFor="let question of ((showAnswered ? allQuestions : unansweredQuestions) | async).reverse()">
           <question [question]="question" [user]="user"></question>
         </nb-list-item>
         <!--<nb-list-item *ngIf="showAnsweredQuestions">Answered Questions:</nb-list-item>-->
