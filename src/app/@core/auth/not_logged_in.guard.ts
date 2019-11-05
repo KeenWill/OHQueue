@@ -5,15 +5,15 @@ import {
   RouterStateSnapshot,
   Router,
 } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
+import {concat, Observable, of} from 'rxjs';
+import {map, startWith, take, tap} from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { NotifyService } from '../notify/notify.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class NotLoggedInGuard implements CanActivate {
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
     return this.auth.user.pipe(
       take(1),
-      map(user => !!user),
+      map(user => !user),
     );
   }
 }
