@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {auth} from 'firebase';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {NotifyService} from '../notify/notify.service';
+import { Injectable } from '@angular/core';
+import { Router} from '@angular/router';
+import { auth} from 'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { NotifyService } from '../notify/notify.service';
 
-import {Observable, of} from 'rxjs';
-import {startWith, switchMap, tap} from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { startWith, switchMap, tap } from 'rxjs/operators';
 
 export interface User {
   uid: string;
@@ -82,7 +82,6 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(credential => {
         this.notify.update('Welcome to Firestarter!!!', 'success');
-        console.log(credential);
         return this.updateUserData(credential.user);
       })
       .catch(error => this.handleError(error));
