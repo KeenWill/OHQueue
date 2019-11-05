@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router} from '@angular/router';
-import { auth} from 'firebase';
+import { Router } from '@angular/router';
+import { auth } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NotifyService } from '../notify/notify.service';
@@ -34,7 +34,11 @@ export class AuthService {
           return of(null);
         }
       }),
-      tap(user => localStorage.setItem('user', JSON.stringify(user))),
+      tap(user => {
+        if (user) {
+          localStorage.setItem('user', JSON.stringify(user));
+        }
+      }),
       startWith(JSON.parse(localStorage.getItem('user'))),
     );
   }
@@ -146,9 +150,14 @@ export class AuthService {
   }
 
   // Sets user data to firestore after succesful login
-  private updateUserData(user: any) {
+  private updateUserData({uid, email, displayName}) {
     return this.afs.doc(
-      `users/${user.uid}`,
-    );
+      `users/${uid}`,
+    )
+      .update({uid, email, displayName})
+      .catch(() => this.afs.doc(
+        `users/${uid}`,
+      )
+        .set({uid, email, displayName, isTA: false}));
   }
 }
