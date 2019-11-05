@@ -150,7 +150,7 @@ export class AuthService {
   }
 
   // Sets user data to firestore after succesful login
-  private updateUserData({ uid, email, displayName }): AngularFirestoreDocument<any> {
+  private updateUserData({ uid, email, displayName }) {
     return this.afs.doc(
       `users/${uid}`,
     )
