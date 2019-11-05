@@ -1,4 +1,4 @@
-<nb-card class="list-card" *ngIf="auth.user | async as user"  [accent]="queue.isOpen ? 'primary' : 'danger'"> <!--size="small"-->
+<nb-card class="list-card" *ngIf="auth.user | async as user" [accent]="queue.isOpen ? 'info' : 'danger'">
   <div *ngIf="user.isTA; then ta else student">
     <!-- template will replace this div -->
   </div>
