@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {auth} from 'firebase';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore, AngularFirestoreDocument,} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/firestore';
 import {NotifyService} from '../notify/notify.service';
 
 import {Observable, of} from 'rxjs';
