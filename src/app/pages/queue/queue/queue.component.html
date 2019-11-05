@@ -1,4 +1,4 @@
-<nb-card class="list-card" *ngIf="auth.user | async as user"> <!--size="small"-->
+<nb-card class="list-card" *ngIf="auth.user | async as user"  [accent]="queue.isOpen ? 'primary' : 'danger'"> <!--size="small"-->
   <div *ngIf="user.isTA; then ta else student">
     <!-- template will replace this div -->
   </div>
@@ -15,16 +15,16 @@
   <!-- User is student -->
   <ng-template #student>
     <div *ngIf="auth.user | async as user">
-      <nb-card-header class="queue-title">
-        {{ queue.name }} <br>
-        &nbsp;&nbsp; &nbsp; Description: {{ queue.desc }}
-      </nb-card-header>
       <nb-card-body>
+        <div class="queue-header">
+          <div class="title">{{ queue.name }}</div> <br>
+          <div class="desc">{{ queue.desc }}</div>
+        </div>
         <nb-list>
           <nb-list-item *ngFor="let question of ((showAnswered ? allQuestions : unansweredQuestions) | async).reverse()">
             <question [question]="question" [user]="user"></question>
           </nb-list-item>
-          <nb-list-item><button nbButton fullWidth outline (click)="askQuestion(user, user.displayName)">Ask Question</button></nb-list-item>
+          <nb-list-item><button nbButton fullWidth (click)="askQuestion(user, user.displayName)">Ask Question</button></nb-list-item>
         </nb-list>
       </nb-card-body>
     </div>
@@ -32,15 +32,15 @@
 
   <!-- User is TA -->
   <ng-template #ta>
-    <nb-card-header class="queue-title">
-      {{ queue.name }} ({{ queue.isOpen ? "Open" : "Closed" }})
-      <button style="float: right;" mat-icon-button [matMenuTriggerFor]="appMenu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <br>
-      Description: {{ queue.desc }}
-    </nb-card-header>
     <nb-card-body>
+      <div class="queue-header">
+        <button class="detail-button" mat-icon-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <div class="title">{{ queue.name }} ({{ queue.isOpen ? "Open" : "Closed" }})</div>
+        <br>
+        <div class="desc">{{ queue.desc }}</div>
+      </div>
       <nb-list *ngIf="auth.user | async as user">
         <!--<nb-list-item *ngIf="showAnsweredQuestions">Unanswered Questions:</nb-list-item>-->
         <nb-list-item *ngFor="let question of ((showAnswered ? allQuestions : unansweredQuestions) | async).reverse()">
