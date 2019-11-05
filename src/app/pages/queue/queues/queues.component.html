@@ -18,10 +18,10 @@
   </nb-card>
 
   <div class="lists row">
-    <div class="col-md-12 col-lg-6 col-xxxl-6" *ngFor="let queue of queues | async">
-      <queue [user]="user" class="queue"
-             *ngIf="queue.isOpen || user.isTA || queue.containsUserQuestion"
-             [queue]="queue"></queue>
-    </div>
+    <ng-container *ngFor="let queue of queues | async">
+      <div class="col-md-12 col-lg-6 col-xxxl-6" *ngIf="queue.isOpen || user.isTA || queue.containsUserQuestion">
+        <queue [user]="user" [queue]="queue" class="queue"></queue>
+      </div>
+    </ng-container>
   </div>
 </div>
