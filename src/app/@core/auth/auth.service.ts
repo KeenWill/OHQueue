@@ -154,7 +154,7 @@ export class AuthService {
     return this.afs.doc(
       `users/${uid}`,
     )
-      .update({uid, email, displayName})
+    .update({ uid, email, displayName })
       .catch(() => this.afs.doc(
         `users/${uid}`,
       )
