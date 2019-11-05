@@ -157,7 +157,7 @@ export class AuthService {
     .update({ uid, email, displayName })
     .catch(() => this.afs.doc(
       `users/${uid}`,
-      )
+    )
     .set({ uid, email, displayName, isTA: false }));
   }
 }
