@@ -1,15 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { auth } from 'firebase';
-import { AngularFireAuth } from '@angular/fire/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/firestore';
-import { NotifyService } from '../notify/notify.service';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {auth} from 'firebase';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFirestore, AngularFirestoreDocument,} from '@angular/fire/firestore';
+import {NotifyService} from '../notify/notify.service';
 
-import { Observable, of } from 'rxjs';
-import { switchMap, startWith, tap } from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {startWith, switchMap, tap} from 'rxjs/operators';
 
 export interface User {
   uid: string;
@@ -85,6 +82,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(credential => {
         this.notify.update('Welcome to Firestarter!!!', 'success');
+        console.log(credential);
         return this.updateUserData(credential.user);
       })
       .catch(error => this.handleError(error));
@@ -149,17 +147,9 @@ export class AuthService {
   }
 
   // Sets user data to firestore after succesful login
-  private updateUserData(user: User) {
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc(
+  private updateUserData(user: any) {
+    return this.afs.doc(
       `users/${user.uid}`,
     );
-
-    const data: User = {
-      uid: user.uid,
-      email: user.email || null,
-      displayName: user.displayName || 'student',
-      isTA: user.isTA || false,
-    };
-    return userRef.set(data);
   }
 }
