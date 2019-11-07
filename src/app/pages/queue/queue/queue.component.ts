@@ -36,8 +36,8 @@ export class QueueComponent implements OnInit {
     public dialog: MatDialog) { }
 
   static timestampComparison(qa: Question, qb: Question): number {
-    if (qa.timestamp < qb.timestamp) return 1;
-    if (qa.timestamp > qb.timestamp) return -1;
+    if (qa.timestamp < qb.timestamp) return -1;
+    if (qa.timestamp > qb.timestamp) return 1;
     return 0;
   }
 
