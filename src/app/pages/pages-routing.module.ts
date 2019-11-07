@@ -7,7 +7,6 @@ import { QueuesComponent } from './queue/queues/queues.component';
 import { LoginComponent } from './login/login.component';
 import { TAGuard } from '../@core/auth/ta.guard';
 import { AuthGuard } from '../@core/auth/auth.guard';
-import {NotLoggedInGuard} from '../@core/auth/not_logged_in.guard';
 
 const routes: Routes = [{
   path: '',
@@ -26,18 +25,10 @@ const routes: Routes = [{
     {
       path: 'login',
       component: LoginComponent,
-      canActivate: [NotLoggedInGuard],
     },
     {
-      path: '/',
-      redirectTo: 'queues',
-      canActivate: [AuthGuard],
-    },
-    {
-      path: '/',
+      path: '**',
       redirectTo: 'login',
-      pathMatch: 'full',
-      canActivate: [NotLoggedInGuard],
     },
   ],
 }];

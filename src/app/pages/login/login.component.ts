@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../@core/auth/auth.service';
@@ -8,10 +8,18 @@ import { AuthService } from '../../@core/auth/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   constructor(public auth: AuthService,
-              private router: Router) { }
+              private router: Router) {}
+
+  ngOnInit() {
+    this.auth.user.subscribe(user => {
+      if (user) {
+        this.router.navigateByUrl('/pages/queues');
+      }
+    });
+  }
 
   async signInWithGoogle() {
     await this.auth.googleLogin();
@@ -22,7 +30,7 @@ export class LoginComponent {
 
   private afterSignIn() {
     // Do after login stuff here, such router redirects, toast messages, etc.
-    return this.router.navigate(['/']);
+    return this.router.navigate(['/queues']);
   }
 
 }
