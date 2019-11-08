@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { NotifyService } from '../notify/notify.service';
-import {LoginComponent} from '../../pages/login/login.component';
+import { LoginComponent } from '../../pages/login/login.component';
 
 @Injectable({
   providedIn: 'root',
