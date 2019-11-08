@@ -26,6 +26,11 @@ export class AuthService {
     private router: Router,
     private notify: NotifyService,
   ) {
+    let initUser: User = null;
+    const localStorageUser = localStorage.getItem('user');
+    if (localStorageUser) {
+      initUser = JSON.parse(localStorageUser);
+    }
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -39,7 +44,7 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(user));
         }
       }),
-      startWith(JSON.parse(localStorage.getItem('user'))),
+      startWith(initUser),
     );
   }
 
@@ -139,7 +144,8 @@ export class AuthService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
+      localStorage.setItem('user', null);
     });
   }
 
