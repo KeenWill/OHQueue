@@ -31,11 +31,28 @@
 
 @include nb-install-component() {
   .list-card {
-    nb-card-header {
-      border-bottom: none;
-    }
-
     nb-card-body {
+      .queue-header {
+        //border-bottom: none;
+        padding: 1em;
+        .title {
+          font-size: 1.5em;
+        }
+
+        .desc {
+          font-size: 1em;
+        }
+
+        .detail-button {
+          //top: 50%;
+          //right: 10%;
+          //position: absolute;
+          float: right;
+          margin-top: 0.5em;
+        }
+
+        border-bottom: 1px solid grey;
+      }
       padding: 0;
     }
   }
