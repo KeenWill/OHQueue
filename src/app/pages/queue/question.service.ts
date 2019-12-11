@@ -20,8 +20,12 @@ export class QuestionService {
 
   getQuestions(queueId): Observable<Question[]> {
     // ['added', 'modified', 'removed']
+    const date = new Date();
+    date.setDate(date.getDate() - 1);
+    date.setHours(23, 59, 59);
     return this.afs.collection<Question>(`/queues/${queueId}/questions/`,
-    ref => ref.orderBy('timestamp'))
+    // ref => ref.where('timestamp', '>', date.getTime()).orderBy('timestamp'))
+      ref => ref.orderBy('timestamp'))
     .snapshotChanges().pipe(
       map((actions) => {
         return actions.map((a) => {

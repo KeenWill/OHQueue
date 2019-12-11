@@ -9,7 +9,8 @@
 <div *ngIf="auth.user | async as user">
   <nb-card *ngIf="user.isTA">
     <nb-card-body>
-      <button nbButton fullWidth outline class="make-queue" (click)="makeQueue()">Make a New Queue</button>
+      <button nbButton fullWidth outline status="info" shape="semi-round"
+              class="make-queue" (click)="makeQueue()">Make a New Queue</button>
     </nb-card-body>
   </nb-card>
 
